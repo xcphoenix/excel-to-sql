@@ -125,6 +125,7 @@ public class Parser {
         List<CsvMapConfig.Entry> nonColEntry = csvMapConfig.getEntryList().stream()
                 .filter(e -> e.getColName() == null).collect(Collectors.toList());
         Map<String, CsvMapConfig.Entry> col2Entry = csvMapConfig.getEntryList().stream()
+                .filter(e -> e.getColName() != null && e.getColName().length() > 0)
                 .collect(Collectors.toMap(CsvMapConfig.Entry::getColName, entry -> entry));
 
         // read excel
